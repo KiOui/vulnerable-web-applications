@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Hackerstore">
+    <arg name="colors"/>
+    <arg value="p"/>
+    <rule ref="PSR12"/>
+    <file>website</file>
+</ruleset>

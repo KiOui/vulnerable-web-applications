@@ -1,0 +1,29 @@
+services:
+  database:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: store
+      MYSQL_USER: store
+      MYSQL_PASSWORD: password
+    networks:
+      - hackerstore-network
+  hackerstore:
+    build:
+      context: ../
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: store
+      MYSQL_USER: store
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: database:3306
+    networks:
+      - hackerstore-network
+    ports:
+      - 80:80
+
+networks:
+  hackerstore-network:
+    driver: bridge
