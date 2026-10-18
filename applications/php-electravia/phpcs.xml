@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset name="Electravia">
+    <arg name="colors"/>
+    <arg value="p"/>
+    <rule ref="PSR12"/>
+    <file>website</file>
+    <exclude-pattern>*/403.php</exclude-pattern>
+    <exclude-pattern>*/users.php</exclude-pattern>
+</ruleset>
