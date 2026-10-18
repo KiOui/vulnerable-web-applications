@@ -1,0 +1,7 @@
+services:
+  reader:
+    build:
+      context: ../
+    restart: always
+    ports:
+      - 80:80

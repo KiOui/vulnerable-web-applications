@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset name="Reader">
+    <arg name="colors"/>
+    <arg value="p"/>
+    <rule ref="PSR12"/>
+    <file>website</file>
+    <exclude-pattern>*/test_dev.php</exclude-pattern>
+    <exclude-pattern>*/index.php</exclude-pattern>
+</ruleset>
