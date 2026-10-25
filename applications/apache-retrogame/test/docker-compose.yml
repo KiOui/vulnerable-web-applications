@@ -1,0 +1,7 @@
+services:
+  retrogame:
+    build:
+      context: ../
+    restart: unless-stopped
+    ports:
+      - "80:80"
