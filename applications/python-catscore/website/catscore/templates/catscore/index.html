@@ -1,0 +1,45 @@
+{% extends 'catscore/base.html' %}
+
+{% block title %}Home | Catscore{% endblock %}
+
+{% block page %}
+    <main class="container py-5">
+        <section class="p-4 p-md-5 mb-5 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-2">
+                <h1 class="display-5 fw-bold">Welcome to Catscore</h1>
+                <p class="col-md-8 fs-5">A little corner of the internet for curious cat people, thoughtful stories, and excellent naps.</p>
+                <a class="btn btn-primary btn-lg" href="{% url 'comments' %}">Read the comments</a>
+            </div>
+        </section>
+
+        <section aria-labelledby="latest-title">
+            <h2 id="latest-title" class="h3 mb-4">Around the community</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <article class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">The sunny-window report</h3>
+                            <p class="card-text">Our neighborhood cats have officially declared the east-facing windowsill prime real estate.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Small things, big purrs</h3>
+                            <p class="card-text">This week’s favorite sound: the gentle rumble that starts just before breakfast.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">A curious question</h3>
+                            <p class="card-text">If a cardboard box is left unattended, how long until it becomes a cat bed?</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

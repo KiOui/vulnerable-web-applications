@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}Catscore{% endblock %}
+    </title>
+    <script>
+        CSRF_TOKEN = "{{ csrf_token }}";
+        // Keep Bootstrap 5.3's data-bs-theme in sync with the OS color scheme so
+        // tables, dropdowns and modals pick up the right palette automatically.
+        (function () {
+            const mq = window.matchMedia("(prefers-color-scheme: dark)");
+            const apply = () => document.documentElement.setAttribute(
+                "data-bs-theme", mq.matches ? "dark" : "light"
+            );
+            apply();
+            mq.addEventListener("change", apply);
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Base CSS -->
+    <link href="{% static "catscore/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
+    {% block styles %}{% endblock %}
+
+    <!-- Fontawesome -->
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    
+</head>
+<body class="d-flex flex-column h-100">
+<div id="page-container">
+    {% block header %}
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'index' %}">Catscore</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'comments' %}">Comments</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <form method="post" action="{% url 'logout' %}">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Log out</button>
+                                    </form>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    {% endblock %}
+
+    <div class="page">
+        {% block page %}{% endblock %}
+    </div>
+</div>
+
+<script src="{% static "catscore/js/bootstrap.bundle.min.js" %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

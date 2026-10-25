@@ -1,0 +1,41 @@
+services:
+  catscore:
+    networks:
+      - catscore-network
+    build: ..
+    restart: unless-stopped
+    ports:
+      - 80:80
+    environment:
+      POSTGRES_USER: catscore
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: catscore
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+      DJANGO_ALLOWED_HOSTS: localhost
+      DJANGO_SECRET_KEY: "django-insecure-=_1fy-d9@4z#=^-%l4snxp7_9zg7reom5q1rn+)$lb2bw(j0on"
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: postgres:17.11-alpine
+    restart: unless-stopped
+    networks:
+      - catscore-network
+    environment:
+      POSTGRES_USER: catscore
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: catscore
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "tosti", "-d", "tosti"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  
+networks:
+  catscore-network:
+    driver: bridge

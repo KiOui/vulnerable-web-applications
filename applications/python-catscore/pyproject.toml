@@ -1,0 +1,24 @@
+[project]
+name = "python-catscore"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Lars van Rhijn", email = "larsvanrhijn@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "django>=6.1.2",
+    "fontawesomefree>=6.6.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "flake8>=7.3.0",
+]
+prod = [
+    "psycopg2-binary>=2.9.12",
+    "sentry-sdk>=2.68.0",
+    "uwsgi>=2.0.31",
+]

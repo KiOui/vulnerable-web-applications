@@ -1,0 +1,1 @@
+"""Catscore database migrations."""

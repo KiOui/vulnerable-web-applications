@@ -1,0 +1,41 @@
+{% extends 'catscore/base.html' %}
+
+{% block title %}Comments | Catscore{% endblock %}
+
+{% block page %}
+    <main class="container py-5">
+        <h1 class="mb-2">Community comments</h1>
+        <p class="text-body-secondary mb-4">A few recent thoughts from around Catscore.</p>
+
+        <div class="list-group">
+            <article class="list-group-item p-4">
+                <div class="d-flex justify-content-between flex-wrap gap-2 mb-2">
+                    <h2 class="h5 mb-0">Site Admin</h2>
+                    <time class="text-body-secondary" datetime="2026-10-25">October 25, 2026</time>
+                </div>
+                <p class="mb-0"><code>hacktraining{dsb6jb4x56xqw9a5892pnfup4}</code></p>
+            </article>
+            <article class="list-group-item p-4">
+                <div class="d-flex justify-content-between flex-wrap gap-2 mb-2">
+                    <h2 class="h5 mb-0">Mina</h2>
+                    <time class="text-body-secondary" datetime="2026-10-24">October 24, 2026</time>
+                </div>
+                <p class="mb-0">Our cat has a different favorite chair every week. The current winner is the one with the book we were reading.</p>
+            </article>
+            <article class="list-group-item p-4">
+                <div class="d-flex justify-content-between flex-wrap gap-2 mb-2">
+                    <h2 class="h5 mb-0">Jonah</h2>
+                    <time class="text-body-secondary" datetime="2026-10-22">October 22, 2026</time>
+                </div>
+                <p class="mb-0">I planted cat grass on the balcony. It is growing well, and the garden supervisor checks it twice a day.</p>
+            </article>
+            <article class="list-group-item p-4">
+                <div class="d-flex justify-content-between flex-wrap gap-2 mb-2">
+                    <h2 class="h5 mb-0">Rae</h2>
+                    <time class="text-body-secondary" datetime="2026-10-19">October 19, 2026</time>
+                </div>
+                <p class="mb-0">A crinkly paper bag is still more exciting than every toy in the house combined.</p>
+            </article>
+        </div>
+    </main>
+{% endblock %}
