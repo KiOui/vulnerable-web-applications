@@ -1,0 +1,30 @@
+services:
+  energyapi:
+    networks:
+      - energyapi-network
+    build: ..
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/energyapi
+    depends_on:
+      mongodb:
+        condition: service_healthy
+  
+  mongodb:
+    image: mongo:9
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: always
+    networks:
+      - energyapi-network
+    environment:
+      MONGO_INITDB_DATABASE: energyapi
+  
+networks:
+  energyapi-network:
+    driver: bridge
